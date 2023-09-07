@@ -1032,15 +1032,9 @@ const restaurantList=[
             }
           ];
 
-const item={
-    "image":"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/g5txnz35wlrgbskk3r8y",
-    "title": "Apna Sweets",
-    "cuisines":"Sweet & Beverage",
-    "rating" :"4.5"
-}
+
 
 const Card=({cloudinaryImageId,name,cuisines,avgRating})=>{
-    // const {cloudinaryImageId,name,cuisines,avgRating}=props.restraunt.info;
     return(
     <div className="card">
     <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId} alt="" />
@@ -1052,17 +1046,9 @@ const Card=({cloudinaryImageId,name,cuisines,avgRating})=>{
 };
 const Main=()=>(
         <div className="container">
-           {/* <Card {...restaurantList[0].info} />
-           <Card {...restaurantList[1].info} />
-           <Card {...restaurantList[2].info}/>
-           <Card {...restaurantList[3].info}/>
-           <Card {...restaurantList[4].info}/>
-           <Card {...restaurantList[5].info}/>
-           <Card {...restaurantList[6].info}/> */}
-
            {
             restaurantList.map((restraunts)=>{
-                return  <Card {...restraunts.info}/>;
+                return  <Card {...restraunts.info} key={restraunts.info.id} />;
             })
            }
         </div>
