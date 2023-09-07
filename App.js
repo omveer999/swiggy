@@ -1039,23 +1039,32 @@ const item={
     "rating" :"4.5"
 }
 
-const Card=(props)=>(
+const Card=({cloudinaryImageId,name,cuisines,avgRating})=>{
+    // const {cloudinaryImageId,name,cuisines,avgRating}=props.restraunt.info;
+    return(
     <div className="card">
-    <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+props.restraunt.info.cloudinaryImageId} alt="" />
-    <h2>{props.restraunt.info.name}</h2>
-    <h3>{props.restraunt.info.cuisines.join(", ")}</h3>
-    <h3>{props.restraunt.info.avgRating}</h3>
-</div>
-);
+    <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId} alt="" />
+    <h2>{name}</h2>
+    <h3>{cuisines.join(", ")}</h3>
+    <h3>{avgRating}</h3>
+  </div>
+  )
+};
 const Main=()=>(
         <div className="container">
-           <Card restraunt={restaurantList[0]} />
-           <Card restraunt={restaurantList[1]} />
-           <Card restraunt={restaurantList[2]}/>
-           <Card restraunt={restaurantList[3]}/>
-           <Card restraunt={restaurantList[4]}/>
-           <Card restraunt={restaurantList[5]}/>
-           <Card restraunt={restaurantList[6]}/>
+           {/* <Card {...restaurantList[0].info} />
+           <Card {...restaurantList[1].info} />
+           <Card {...restaurantList[2].info}/>
+           <Card {...restaurantList[3].info}/>
+           <Card {...restaurantList[4].info}/>
+           <Card {...restaurantList[5].info}/>
+           <Card {...restaurantList[6].info}/> */}
+
+           {
+            restaurantList.map((restraunts)=>{
+                return  <Card {...restraunts.info}/>;
+            })
+           }
         </div>
 );
 const Footer=()=>(
