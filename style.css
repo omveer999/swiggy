@@ -27,8 +27,23 @@ body{
     display:inline;
     margin:0px 10px; 
 }
+.container{
+    margin: 20px 10px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .card{ 
-    width: 100%;
+    width: 200px;
     box-shadow: 1px 1px 5px  gray;
+    border:1px solid black;
+    padding: 10px;
+    margin:10px
+}
+
+
+
+.card > img{ 
+    width: 100%;
 }
