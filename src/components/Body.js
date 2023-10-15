@@ -3,6 +3,7 @@ import { RESTRAUNTS_DATA } from "../config";
 
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import useOnline from "../utils/useOnline";
 
 function filterData(searchText,restaurants){
     console.log(searchText,restaurants)
@@ -15,6 +16,11 @@ const Main=()=>{
     const [restaurants,setRestaurants]=useState([]);
     const [allrestaurants,setAllRestaurants]=useState([]);
     const [searchText,setSearchText]=useState("");
+
+    //useOnline is customhook to check you are online or not 
+    const isonline=useOnline();
+
+   
     async function fetchData(){
       const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
       const data2= await data.json()
@@ -32,6 +38,14 @@ const Main=()=>{
     fetchData();
     // console.log(restra) 
   },[])
+
+  if(!isonline){
+    return (
+      <div>
+        <h3>You are not connected Internet, Please check and Try Again!!!</h3>
+      </div>
+    )
+  }
 
     return !restaurants || !restaurants.length?(<Shimmer></Shimmer>):(
         <div className="container">
