@@ -48,21 +48,24 @@ const Main=()=>{
   }
 
     return !restaurants || !restaurants.length?(<Shimmer></Shimmer>):(
-        <div className="container">
-          <div className="searchBar">
-              <input type="search" className="search-box" name="search" value={searchText}  onChange={(e)=>
+      <>
+         <div className="my-2 p-3 flex justify-center">
+              <input type="search" className="p-2 border-2 mx-2 border-black bg-pink-100 focus:bg-white" name="search" value={searchText}  onChange={(e)=>
                 setSearchText(e.target.value)
               }  placeholder="search items.." />     
-              <button type="button" className="search-button" name="btnsearch" onClick={()=>{
+              <button type="button" className="border-2 p-2 border-black bg-purple-500 hover:bg-pink-200" name="btnsearch" onClick={()=>{
                 setRestaurants(filterData(searchText,allrestaurants))
               }}> Search </button>
          </div>
-       {
-        restaurants.map((restraunts)=>{
-            return  <Card {...restraunts.info} key={restraunts.info.id} />;
-        })
-       }
-    </div>
+         <div className="container  justify-center flex flex-wrap">
+          {
+            restaurants.map((restraunts)=>{
+                return  <Card {...restraunts.info} key={restraunts.info.id} />;
+            })
+          }
+        </div>
+      </>
+       
     )
 
 }

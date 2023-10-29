@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Card=({cloudinaryImageId,name,cuisines,avgRating,id})=>{
     const path="/restaurant-detail/"+id;
     return(
-    <div className="card">
+    <div className="w-[200px] m-3 p-3 shadow-md border-black">
     <img src={IMG_BASE_URL+cloudinaryImageId} alt="" />
     <h2><Link to={path}>{name}</Link> </h2>
     <h3>{cuisines.join(", ")}</h3>
