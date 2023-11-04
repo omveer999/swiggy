@@ -8,7 +8,7 @@ const Header=()=>{
     return(
     <div className="flex w-full justify-between items-center  p-1 bg-pink-50 shadow-md mb-3">
         <div className="logo">
-            <img src={myImage} className="w-8 pt-3" alt="logo" />
+            <img src={myImage} className="w-14 pt-3" alt="logo" />
         </div>
         <div className="menu">
             <ul className="list-none ">

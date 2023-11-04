@@ -31,7 +31,7 @@ const Main=()=>{
           setRestaurants(e.card?.card?.gridElements?.infoWithStyle?.restaurants)
         }
        })
-     
+     console.log(restaurants);
     }
 
   useEffect(()=>{
@@ -60,6 +60,7 @@ const Main=()=>{
          <div className="container  justify-center flex flex-wrap">
           {
             restaurants.map((restraunts)=>{
+              console.log(restraunts);
                 return  <Card {...restraunts.info} key={restraunts.info.id} />;
             })
           }

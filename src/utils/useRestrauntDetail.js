@@ -8,6 +8,11 @@ const restaurantsDetail=(id)=>{
         // console.log("hello",json?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR.cards[0].card.card)
         const detailedData=[]
         json.data.cards.map((e)=>{
+            if("card" in e && "card" in e?.card && "info" in e?.card?.card){
+                console.log(e.card.card.info);
+                const {name,cloudinaryImageId,avgRatingString,areaName,city,id,sla,feeDetails,totalRatingsString}=e.card.card.info;
+                detailedData.push({"restraunt":{name,cloudinaryImageId,avgRatingString,areaName,city,id,sla,feeDetails,totalRatingsString}});
+            }
             if(("groupedCard" in e) && ("cardGroupMap" in e.groupedCard) &&  ("REGULAR" in e.groupedCard.cardGroupMap) ){
                 e.groupedCard.cardGroupMap.REGULAR.cards.map((e2)=>{
                     if(e2.card?.card?.categories!=null){
@@ -15,10 +20,10 @@ const restaurantsDetail=(id)=>{
                             // console.log("category",e3.title)
                             const itemList=[]
                             e3.itemCards.map((e4)=>{
-                                console.log(e4.card.info);
+                                // console.log(e4.card.info);
                                 if(e4.card.info.price>0){
-                                    const {id,name,price,imageId}=e4.card.info;
-                                    itemList.push( { id, name, price,imageId } );
+                                    const {id,name,price,imageId,description}=e4.card.info;
+                                    itemList.push( { id, name, price,imageId,description } );
                                 }
                                
                             })
